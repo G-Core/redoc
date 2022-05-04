@@ -91,7 +91,7 @@ export const StyledMarkdownBlock = styled(
 
     code {
       background-color: transparent;
-      color: white;
+      color: ${({ theme }) => theme.typography.code.color};
       padding: 0;
 
       &:before,
