@@ -1,5 +1,4 @@
 import styled from '../styled-components';
-import { darken } from 'polished';
 import { deprecatedCss } from './mixins';
 
 export const OneOfList = styled.div`
@@ -8,10 +7,11 @@ export const OneOfList = styled.div`
 `;
 
 export const OneOfLabel = styled.span`
-  font-size: 0.9em;
+  font-size: 14px;
   margin-right: 10px;
-  color: ${props => props.theme.colors.primary.main};
+  color: #56535F;
   font-family: ${props => props.theme.typography.headings.fontFamily};
+  font-weight: 500;
 }
 `;
 
@@ -19,14 +19,19 @@ export const OneOfButton = styled.button<{ active: boolean; deprecated: boolean 
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 5px;
-  font-size: 0.8em;
+  font-size: 12px;
   cursor: pointer;
-  border: 1px solid ${props => props.theme.colors.primary.main};
-  padding: 2px 10px;
-  line-height: 1.5em;
+  border: 1px solid #d7dbdf;
+  border-radius: 4px;
+  background: #fff;
+  padding: 4px 8px;
+  line-height: 16px;
   outline: none;
+  color: ${props => props.theme.colors.text.primary};
+
   &:focus {
-    box-shadow: 0 0 0 1px ${props => props.theme.colors.primary.main};
+    color: ${props => props.theme.typography.links.color};
+    border-color: ${props => props.theme.typography.links.color};
   }
 
   ${({ deprecated }) => (deprecated && deprecatedCss) || ''};
@@ -34,17 +39,13 @@ export const OneOfButton = styled.button<{ active: boolean; deprecated: boolean 
   ${props => {
     if (props.active) {
       return `
-      color: white;
-      background-color: ${props.theme.colors.primary.main};
-      &:focus {
-        box-shadow: none;
-        background-color: ${darken(0.15, props.theme.colors.primary.main)};
-      }
+      color: ${props.theme.typography.links.color};
+      border-color: ${props.theme.typography.links.color};
       `;
     } else {
       return `
-        color: ${props.theme.colors.primary.main};
-        background-color: white;
+        color: ${props => props.theme.colors.text.primary};
+        border: 1px solid #d7dbdf;
       `;
     }
   }}

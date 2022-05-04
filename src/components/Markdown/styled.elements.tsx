@@ -69,9 +69,9 @@ export const StyledMarkdownBlock = styled(
     background-color: ${({ theme }) => theme.typography.code.backgroundColor};
 
     font-family: ${props => props.theme.typography.code.fontFamily};
-    border-radius: 2px;
-    border: 1px solid rgba(38, 50, 56, 0.1);
-    padding: 0 ${({ theme }) => theme.spacing.unit}px;
+    border-radius: 4px;
+    border: 1px solid #d6d7d8;
+    padding: 2px ${({ theme }) => theme.spacing.unit}px;
     font-size: ${props => props.theme.typography.code.fontSize};
     font-weight: ${({ theme }) => theme.typography.code.fontWeight};
 
@@ -91,7 +91,7 @@ export const StyledMarkdownBlock = styled(
 
     code {
       background-color: transparent;
-      color: white;
+      color: ${({ theme }) => theme.typography.code.color};
       padding: 0;
 
       &:before,
@@ -128,8 +128,9 @@ export const StyledMarkdownBlock = styled(
   }
 
   table {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
     overflow: auto;
     word-break: normal;
     word-break: keep-all;
@@ -137,21 +138,37 @@ export const StyledMarkdownBlock = styled(
     border-spacing: 0;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    border: 1px solid #d6d7d8;
+    border-radius: 4px;
+  }
+
+  table thead tr {
+    background: #f3f4f5;
+    border-top: 0;
   }
 
   table tr {
     background-color: #fff;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #d6d7d8;
+  }
 
-    &:nth-child(2n) {
-      background-color: ${({ theme }) => theme.schema.nestedBackground};
-    }
+  table tr:first-child {
+    border-top: 0;
+  }
+
+  table thead + tbody tr:first-child {
+    border-top: 1px solid #d6d7d8;
   }
 
   table th,
   table td {
     padding: 6px 13px;
-    border: 1px solid #ddd;
+    border-right: 1px solid #d6d7d8;
+  }
+
+  table th:last-child,
+  table td:last-child {
+    border-right: 0;
   }
 
   table th {
