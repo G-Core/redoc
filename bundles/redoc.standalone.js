@@ -31727,7 +31727,7 @@
                   n.createElement('small', null, ' ReDoc Version: ', '2.0.0-rc.66'),
                   ' ',
                   n.createElement('br', null),
-                  n.createElement('small', null, ' Commit: ', '8240404a'),
+                  n.createElement('small', null, ' Commit: ', '6ce721b0'),
                 )
               : n.Children.only(this.props.children);
           }
@@ -37824,7 +37824,7 @@
 
   .token.punctuation {
     opacity: 0.7;
-    color: #A0FBAA;
+    color: #a0fbaa;
   }
 
   .namespace {
@@ -37858,7 +37858,7 @@
   }
 
   .token.property.string {
-    color: #A0FBAA
+    color: #a0fbaa;
   }
 
   .token.operator,
@@ -37926,13 +37926,13 @@
   }
 
   > button.copy-button {
-    background-color: #FF5913;
+    background-color: #ff5913;
     opacity: 1;
     border-radius: 4px;
 
     :hover,
     :focus {
-      background: #FF7B43;
+      background: #ff7b43;
     }
   }
 `,
@@ -39684,7 +39684,7 @@
 
     font-family: ${e => e.theme.typography.code.fontFamily};
     border-radius: 4px;
-    border: 1px solid #D6D7D8;
+    border: 1px solid #d6d7d8;
     padding: 2px ${({ theme: e }) => e.spacing.unit}px;
     font-size: ${e => e.theme.typography.code.fontSize};
     font-weight: ${({ theme: e }) => e.typography.code.fontWeight};
@@ -39705,7 +39705,7 @@
 
     code {
       background-color: transparent;
-      color: white;
+      color: ${({ theme: e }) => e.typography.code.color};
       padding: 0;
 
       &:before,
@@ -39752,18 +39752,18 @@
     border-spacing: 0;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    border: 1px solid #D6D7D8;
+    border: 1px solid #d6d7d8;
     border-radius: 4px;
   }
 
   table thead tr {
-    background: #F3F4F5;
+    background: #f3f4f5;
     border-top: 0;
   }
 
   table tr {
     background-color: #fff;
-    border-top: 1px solid #D6D7D8;
+    border-top: 1px solid #d6d7d8;
   }
 
   table tr:first-child {
@@ -39771,13 +39771,13 @@
   }
 
   table thead + tbody tr:first-child {
-    border-top: 1px solid #D6D7D8;
+    border-top: 1px solid #d6d7d8;
   }
 
   table th,
   table td {
     padding: 6px 13px;
-    border-right: 1px solid #D6D7D8;
+    border-right: 1px solid #d6d7d8;
   }
 
   table th:last-child,
@@ -44044,8 +44044,8 @@
   box-sizing: border-box;
   margin: 0 ${e => 4 * e.theme.spacing.unit}px;
   padding: 14px 12px;
-  background: #FFFFFF;
-  border: 1px solid #D7DBDF;
+  background: #ffffff;
+  border: 1px solid #d7dbdf;
   box-shadow: 0px 1px 0px rgba(17, 24, 28, 0.08);
   border-radius: 6px;
   font-family: ${({ theme: e }) => e.typography.fontFamily};
@@ -44316,7 +44316,7 @@
           };
         $t({ useProxies: 'ifavailable' });
         const jx = '2.0.0-rc.66',
-          Ix = '8240404a';
+          Ix = '6ce721b0';
         function Nx(e) {
           const t = (function (e) {
               const t = {},
