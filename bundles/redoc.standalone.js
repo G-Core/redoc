@@ -25819,19 +25819,19 @@
               return Oy;
             },
             Redoc: function () {
-              return Sx;
+              return Ox;
             },
             hydrate: function () {
-              return Lx;
-            },
-            init: function () {
               return $x;
             },
+            init: function () {
+              return Nx;
+            },
             revision: function () {
-              return Ix;
+              return jx;
             },
             version: function () {
-              return jx;
+              return Px;
             },
           });
         var e = {};
@@ -31727,7 +31727,7 @@
                   n.createElement('small', null, ' ReDoc Version: ', '2.0.0-rc.66'),
                   ' ',
                   n.createElement('br', null),
-                  n.createElement('small', null, ' Commit: ', '6ce721b0'),
+                  n.createElement('small', null, ' Commit: ', '375fa180'),
                 )
               : n.Children.only(this.props.children);
           }
@@ -35483,20 +35483,16 @@
     `${e.theme.spacing.sectionVertical}px \n    ${e.theme.spacing.sectionHorizontal}px\n    ${
       e.compact ? 0 : e.theme.spacing.sectionVertical
     }px;`};
+  border-right: 1px solid #d6d7d8;
 
   ${({ compact: e, theme: t }) => xa('medium', !0)`
     width: 100%;
     padding: ${`${e ? 0 : t.spacing.sectionVertical / 2}px ${t.spacing.sectionHorizontal / 2}px`};
+    border-right: 0;
   `};
-
-  border-right: 1px solid #d6d7d8;
 `,
           bu = wa.div.attrs(e => ({ [rh]: e.id }))`
   padding: 0;
-
-  &:last-child {
-    min-height: calc(100vh + 1px);
-  }
 
   & > &:last-child {
     min-height: initial;
@@ -35544,30 +35540,80 @@
     flex-direction: column;
   `};
 `,
-          wu = { 1: '24px', 2: '20px', 3: '1.27em' },
-          ku = { 1: '600', 2: '500', 3: '500' },
-          Ou = e => ga`
+          wu = { left: '90deg', right: '-90deg', up: '-180deg', down: '0' };
+        class ku extends n.PureComponent {
+          render() {
+            return n.createElement(
+              'svg',
+              {
+                className: this.props.className,
+                style: this.props.style,
+                version: '1.1',
+                viewBox: '0 0 24 24',
+                x: '0',
+                xmlns: 'http://www.w3.org/2000/svg',
+                y: '0',
+                'aria-hidden': 'true',
+              },
+              n.createElement('polygon', {
+                points: '17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 ',
+              }),
+            );
+          }
+        }
+        const Ou = wa(ku)`
+  height: ${e => e.size || '18px'};
+  width: ${e => e.size || '18px'};
+  vertical-align: middle;
+  float: ${e => e.float || ''};
+  transition: transform 0.2s ease-out;
+  transform: rotateZ(${e => wu[e.direction || 'down']});
+
+  polygon {
+    fill: ${({ color: e, theme: t }) =>
+      (e && t.colors.responses[e] && t.colors.responses[e].color) || e};
+  }
+`,
+          Su = wa.span`
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 0;
+  background-color: ${e => e.theme.colors[e.type].main};
+  color: ${e => e.theme.colors[e.type].contrastText};
+  font-size: ${e => e.theme.typography.code.fontSize};
+  vertical-align: middle;
+  line-height: 1.6;
+  border-radius: 4px;
+  font-weight: ${({ theme: e }) => e.typography.fontWeightBold};
+  font-size: 12px;
+  + span[type] {
+    margin-left: 4px;
+  }
+`,
+          Eu = { 1: '24px', 2: '20px', 3: '1.27em' },
+          _u = { 1: '600', 2: '500', 3: '500' },
+          Au = e => ga`
   font-family: ${({ theme: e }) => e.typography.headings.fontFamily};
-  font-weight: ${ku[e]};
-  font-size: ${wu[e]};
+  font-weight: ${_u[e]};
+  font-size: ${Eu[e]};
   line-height: ${({ theme: e }) => e.typography.headings.lineHeight};
 `,
-          Su = wa.h1`
-  ${Ou(1)};
+          Ru = wa.h1`
+  ${Au(1)};
   color: ${({ theme: e }) => e.colors.text.primary};
 
   ${ka('H1')};
 `,
-          Eu = wa.h2`
-  ${Ou(2)};
+          Cu = wa.h2`
+  ${Au(2)};
   color: ${({ theme: e }) => e.colors.text.primary};
   margin: 0 0 20px;
 
   ${ka('H2')};
 `,
-          _u =
+          Tu =
             (wa.h2`
-  ${Ou(3)};
+  ${Au(3)};
   color: ${({ theme: e }) => e.colors.text.primary};
 
   ${ka('H3')};
@@ -35582,7 +35628,7 @@
   margin-bottom: 16px;
 }
 `),
-          Au = wa.h5`
+          Pu = wa.h5`
   margin: 1em 0 1em 0;
   color: #a5a6a8;
   font-weight: 500;
@@ -35591,6 +35637,7 @@
   line-height: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &:after {
     content: '';
@@ -35601,11 +35648,16 @@
     margin: 0 8px;
   }
 
+  ${Ou} {
+    order: 1;
+    margin-right: 10px;
+  }
+
   ${ka('UnderlinedHeader')};
 `,
-          Ru = (0, n.createContext)(void 0),
-          { Provider: Cu, Consumer: Tu } = Ru;
-        function Pu(e) {
+          ju = (0, n.createContext)(void 0),
+          { Provider: Iu, Consumer: Nu } = ju;
+        function $u(e) {
           const { spec: t, specUrl: o, options: i, onLoaded: a, children: s } = e,
             [l, c] = n.useState(null);
           n.useEffect(() => {
@@ -35707,7 +35759,7 @@
             s({ loading: !u, store: u })
           );
         }
-        const ju = e => ga`
+        const Lu = e => ga`
   ${e} {
     cursor: pointer;
     margin-left: -20px;
@@ -35733,8 +35785,8 @@
     visibility: visible;
   }
 `;
-        function Iu(e) {
-          const t = n.useContext(Ru),
+        function Du(e) {
+          const t = n.useContext(ju),
             r = n.useCallback(
               n => {
                 t &&
@@ -35760,63 +35812,13 @@
               )
             : null;
         }
-        const Nu = wa(Iu)`
-  ${ju('&')};
-`;
-        function $u(e) {
-          return n.createElement(Nu, { to: e.to });
-        }
-        const Lu = { left: '90deg', right: '-90deg', up: '-180deg', down: '0' };
-        class Du extends n.PureComponent {
-          render() {
-            return n.createElement(
-              'svg',
-              {
-                className: this.props.className,
-                style: this.props.style,
-                version: '1.1',
-                viewBox: '0 0 24 24',
-                x: '0',
-                xmlns: 'http://www.w3.org/2000/svg',
-                y: '0',
-                'aria-hidden': 'true',
-              },
-              n.createElement('polygon', {
-                points: '17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 ',
-              }),
-            );
-          }
-        }
         const Mu = wa(Du)`
-  height: ${e => e.size || '18px'};
-  width: ${e => e.size || '18px'};
-  vertical-align: middle;
-  float: ${e => e.float || ''};
-  transition: transform 0.2s ease-out;
-  transform: rotateZ(${e => Lu[e.direction || 'down']});
-
-  polygon {
-    fill: ${({ color: e, theme: t }) =>
-      (e && t.colors.responses[e] && t.colors.responses[e].color) || e};
-  }
-`,
-          Fu = wa.span`
-  display: inline-block;
-  padding: 2px 8px;
-  margin: 0;
-  background-color: ${e => e.theme.colors[e.type].main};
-  color: ${e => e.theme.colors[e.type].contrastText};
-  font-size: ${e => e.theme.typography.code.fontSize};
-  vertical-align: middle;
-  line-height: 1.6;
-  border-radius: 4px;
-  font-weight: ${({ theme: e }) => e.typography.fontWeightBold};
-  font-size: 12px;
-  + span[type] {
-    margin-left: 4px;
-  }
-`,
-          zu = ga`
+  ${Lu('&')};
+`;
+        function Fu(e) {
+          return n.createElement(Mu, { to: e.to });
+        }
+        const zu = ga`
   text-decoration: line-through;
   color: #707070;
 `,
@@ -35831,11 +35833,6 @@
   box-sizing: border-box;
   position: relative;
   padding: 10px 10px 10px 0;
-
-  ${xa('small')`
-    display: block;
-    overflow: hidden;
-  `}
 
   tr:first-of-type > &,
   tr.last > & {
@@ -35910,10 +35907,6 @@
     left: 1px;
   }
 
-  ${xa('small')`
-    border-bottom: none;
-  `}
-
   ${({ kind: e }) => ('field' !== e ? 'font-style: italic' : '')};
 
   ${ka('PropertyNameCell')};
@@ -35929,7 +35922,7 @@
     border-bottom: none;
   }
 
-  ${xa('small')`
+  /* ${xa('small')`
     padding: 0 20px;
     border-bottom: none;
     border-left: 1px solid #D7DBDF;
@@ -35937,7 +35930,7 @@
     tr.last > & {
       border-left: none;
     }
-  `}
+  `} */
 
   ${ka('PropertyDetailsCell')};
 `,
@@ -36014,9 +36007,6 @@
 
   ${xa('small')`
     display: block;
-    > tr, > tbody > tr {
-      display: block;
-    }
   `}
 
   ${xa('small', !1, ' and (-ms-high-contrast:none)')`
@@ -37693,18 +37683,6 @@
       font-weight: 500;
       min-width: 60px;
 
-      &.react-tabs__tab--selected {
-        color: ${e => e.theme.colors.text.primary};
-        background: #fff;
-        border: 1px solid #d7dbdf;
-
-        &:focus {
-          color: ${e => e.theme.typography.links.color};
-          border-color: ${e => e.theme.typography.links.color};
-          outline: auto;
-        }
-      }
-
       &:only-child {
         flex: none;
       }
@@ -37723,6 +37701,16 @@
 
       &.tab-error {
         color: ${e => e.theme.colors.text.primary};
+      }
+
+      &.react-tabs__tab--selected {
+        color: ${e => e.theme.typography.links.color};
+        background: #fff;
+        border: 1px solid ${e => e.theme.typography.links.color};
+
+        &:focus {
+          outline: auto;
+        }
       }
     }
   }
@@ -39668,13 +39656,13 @@
   ${({ inline: e }) => e && ' p {\n    display: inline-block;\n  }'}
 
   h1 {
-    ${Ou(1)};
+    ${Au(1)};
     color: ${e => e.theme.colors.primary.main};
     margin-top: 0;
   }
 
   h2 {
-    ${Ou(2)};
+    ${Au(2)};
     color: ${e => e.theme.colors.text.primary};
   }
 
@@ -39790,7 +39778,7 @@
     font-weight: bold;
   }
 
-  ${ju('.share-link')};
+  ${Lu('.share-link')};
 
   ${vh}
 
@@ -41072,7 +41060,7 @@
       font-weight: ${({ theme: e }) => e.typography.fontWeightBold};
     }
   }
-  ${Mu} {
+  ${Ou} {
     height: ${({ theme: e }) => e.schema.arrow.size};
     width: ${({ theme: e }) => e.schema.arrow.size};
     polygon {
@@ -41395,7 +41383,7 @@
               n.createElement(
                 'div',
                 null,
-                n.createElement(Fu, { type: 'warning' }, ' ', mo('deprecated'), ' '),
+                n.createElement(Su, { type: 'warning' }, ' ', mo('deprecated'), ' '),
               ),
             n.createElement(bg, { raw: h, label: mo('default') + ':', value: s.default }),
             !a && n.createElement(pg, { isArrayType: f, values: s.enum }),
@@ -41495,7 +41483,7 @@
                         'aria-label': 'expand properties',
                       },
                       n.createElement('span', null, a),
-                      n.createElement(Mu, { direction: p ? 'down' : 'right' }),
+                      n.createElement(Ou, { direction: p ? 'down' : 'right' }),
                     ),
                     l && n.createElement(ng, null, ' REQUIRED '),
                   )
@@ -41707,7 +41695,7 @@
                     'div',
                     null,
                     e[t.activeOneOf].deprecated &&
-                      n.createElement(Fu, { type: 'warning' }, 'Deprecated'),
+                      n.createElement(Su, { type: 'warning' }, 'Deprecated'),
                   ),
                   n.createElement(
                     dy,
@@ -41950,9 +41938,9 @@
                     yu,
                     null,
                     n.createElement(
-                      Eu,
+                      Cu,
                       null,
-                      n.createElement($u, { to: e.sectionId }),
+                      n.createElement(Fu, { to: e.sectionId }),
                       e.displayName,
                     ),
                     n.createElement(Rh, { source: e.description || '' }),
@@ -42147,7 +42135,7 @@
               },
             },
           },
-          Ey = wa(Su)`
+          Ey = wa(Ru)`
   margin-top: 0;
   margin-bottom: 0.5em;
 
@@ -42351,7 +42339,7 @@
         class Uy extends n.Component {
           render() {
             return n.createElement(ja, null, e =>
-              n.createElement(Tu, null, t => this.renderWithOptionsAndStore(e, t)),
+              n.createElement(Nu, null, t => this.renderWithOptionsAndStore(e, t)),
             );
           }
           renderWithOptionsAndStore(e, t) {
@@ -42491,7 +42479,7 @@
     color: ${e => Wy(e.depth, e, 'activeTextColor')};
   }
 
-  ${Mu} {
+  ${Ou} {
     height: ${({ theme: e }) => e.sidebar.arrow.size};
     width: ${({ theme: e }) => e.sidebar.arrow.size};
     polygon {
@@ -42530,13 +42518,13 @@
               Jy,
               { className: r, onClick: o || void 0 },
               n.createElement(tb, { type: i }, ks(i)),
-              n.createElement(Mu, {
+              n.createElement(Ou, {
                 size: '1.5em',
                 direction: t ? 'down' : 'right',
                 float: 'left',
               }),
               n.createElement(eb, { deprecated: a }, e),
-              a ? n.createElement(Fu, { type: 'warning' }, ' ', mo('deprecated'), ' ') : null,
+              a ? n.createElement(Su, { type: 'warning' }, ' ', mo('deprecated'), ' ') : null,
             );
           }
         }
@@ -42548,7 +42536,7 @@
     vertical-align: middle;
   }
 
-  ${Mu} {
+  ${Ou} {
     polygon {
       fill: ${({ theme: e }) => Pr(e.colors.tonalOffset, e.colors.gray[100])};
     }
@@ -42679,7 +42667,7 @@
                     e.httpVerb,
                   ),
                   n.createElement(ab, null, e.path),
-                  n.createElement(Mu, {
+                  n.createElement(Ou, {
                     float: 'right',
                     color: t ? 'black' : 'white',
                     size: '20px',
@@ -42732,30 +42720,47 @@
           }
         }
         class fb extends n.PureComponent {
+          constructor(e) {
+            super(e),
+              (this.toggle = () => {
+                this.setState({ expanded: !this.state.expanded });
+              }),
+              (this.state = { expanded: !1 });
+          }
           render() {
             const { place: e, parameters: t } = this.props;
             return t && t.length
               ? n.createElement(
                   'div',
                   { key: e },
-                  n.createElement(Au, null, e, ' Parameters:'),
                   n.createElement(
-                    Qu,
-                    null,
+                    Pu,
+                    { onClick: this.toggle },
+                    e,
+                    ' Parameters:',
+                    n.createElement(Ou, {
+                      size: '1.5em',
+                      direction: this.state.expanded ? 'up' : 'down',
+                    }),
+                  ),
+                  this.state.expanded &&
                     n.createElement(
-                      'tbody',
+                      Qu,
                       null,
-                      ro(t, (e, t, r) =>
-                        n.createElement(qg, {
-                          key: e.name,
-                          isLast: t,
-                          isFirst: r,
-                          field: e,
-                          showExamples: !0,
-                        }),
+                      n.createElement(
+                        'tbody',
+                        null,
+                        ro(t, (e, t, r) =>
+                          n.createElement(qg, {
+                            key: e.name,
+                            isLast: t,
+                            isFirst: r,
+                            field: e,
+                            showExamples: !0,
+                          }),
+                        ),
                       ),
                     ),
-                  ),
                 )
               : null;
           }
@@ -42784,6 +42789,8 @@
                   value: r[t].value,
                   options: r,
                   onChange: this.switchMedia,
+                  onToggle: this.props.onToggle,
+                  expanded: this.props.expanded,
                   ariaLabel: 'Content type',
                 }),
               ),
@@ -42805,6 +42812,13 @@
               : (e[t] = n);
         const xb = ['path', 'query', 'cookie', 'header'];
         class wb extends n.PureComponent {
+          constructor(e) {
+            super(e),
+              (this.toggle = () => {
+                this.setState({ expanded: !this.state.expanded });
+              }),
+              (this.state = { expanded: !1 });
+          }
           orderParams(e) {
             const t = {};
             return (
@@ -42826,14 +42840,20 @@
               n.Fragment,
               null,
               o.map(e => n.createElement(fb, { key: e, place: e, parameters: r[e] })),
-              i && n.createElement(Ob, { content: i, description: a }),
+              i &&
+                n.createElement(Ob, {
+                  expanded: this.state.expanded,
+                  content: i,
+                  description: a,
+                  onToggle: this.toggle,
+                }),
             );
           }
         }
         function kb(e) {
           return n.createElement(
-            Au,
-            { key: 'header' },
+            Pu,
+            { onClick: () => e.onToggle(), key: 'header' },
             'Request Body schema: ',
             n.createElement(
               yh,
@@ -42843,33 +42863,115 @@
                 return e;
               })({}, e),
             ),
+            n.createElement(Ou, { size: '1.5em', direction: e.expanded ? 'up' : 'down' }),
           );
         }
         function Ob(e) {
-          const { content: t, description: r } = e,
-            { isRequestType: o } = t;
-          return n.createElement(hb, { content: t, renderDropdown: kb }, ({ schema: e }) =>
-            n.createElement(
-              n.Fragment,
-              null,
-              void 0 !== r && n.createElement(Rh, { source: r }),
-              n.createElement(dy, { skipReadOnly: o, skipWriteOnly: !o, key: 'schema', schema: e }),
-            ),
+          const { content: t, description: r, expanded: o, onToggle: i } = e,
+            { isRequestType: a } = t;
+          return n.createElement(
+            hb,
+            { onToggle: i, expanded: o, content: t, renderDropdown: kb },
+            ({ schema: e }) =>
+              n.createElement(
+                n.Fragment,
+                null,
+                o && void 0 !== r && n.createElement(Rh, { source: r }),
+                o &&
+                  n.createElement(dy, {
+                    skipReadOnly: a,
+                    skipWriteOnly: !a,
+                    key: 'schema',
+                    schema: e,
+                  }),
+              ),
           );
         }
-        const Sb = wa(
+        class Sb extends n.PureComponent {
+          render() {
+            const { headers: e } = this.props;
+            return void 0 === e || 0 === e.length
+              ? null
+              : n.createElement(
+                  n.Fragment,
+                  null,
+                  n.createElement(Pu, null, 'Response Headers:'),
+                  n.createElement(
+                    Qu,
+                    null,
+                    n.createElement(
+                      'tbody',
+                      null,
+                      ro(e, (e, t, r) =>
+                        n.createElement(qg, {
+                          isLast: t,
+                          isFirst: r,
+                          key: e.name,
+                          field: e,
+                          showExamples: !0,
+                        }),
+                      ),
+                    ),
+                  ),
+                );
+          }
+        }
+        var Eb = Object.defineProperty,
+          _b = Object.getOwnPropertySymbols,
+          Ab = Object.prototype.hasOwnProperty,
+          Rb = Object.prototype.propertyIsEnumerable,
+          Cb = (e, t, n) =>
+            t in e
+              ? Eb(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              : (e[t] = n);
+        class Tb extends n.PureComponent {
+          constructor() {
+            super(...arguments),
+              (this.renderDropdown = e =>
+                n.createElement(
+                  Pu,
+                  { key: 'header' },
+                  'Response Schema: ',
+                  n.createElement(
+                    yh,
+                    ((e, t) => {
+                      for (var n in t || (t = {})) Ab.call(t, n) && Cb(e, n, t[n]);
+                      if (_b) for (var n of _b(t)) Rb.call(t, n) && Cb(e, n, t[n]);
+                      return e;
+                    })({}, e),
+                  ),
+                ));
+          }
+          render() {
+            const { description: e, extensions: t, headers: r, content: o } = this.props.response;
+            return n.createElement(
+              n.Fragment,
+              null,
+              e && n.createElement(Rh, { source: e }),
+              n.createElement(hg, { extensions: t }),
+              n.createElement(Sb, { headers: r }),
+              n.createElement(
+                hb,
+                { content: o, renderDropdown: this.renderDropdown },
+                ({ schema: e }) =>
+                  n.createElement(dy, { skipWriteOnly: !0, key: 'schema', schema: e }),
+              ),
+            );
+          }
+        }
+        const Pb = wa(
             n.memo(function ({ title: e, empty: t, code: r, opened: o, className: i, onClick: a }) {
               return n.createElement(
                 'button',
                 { className: i, onClick: (!t && a) || void 0, 'aria-expanded': o, disabled: t },
                 !t &&
-                  n.createElement(Mu, {
+                  n.createElement(Ou, {
                     size: '1.5em',
                     color: '#22174A',
                     direction: o ? 'up' : 'down',
                     float: 'right',
                   }),
-                n.createElement(Ab, null, r, ' '),
+                n.createElement(Ib, null, r, ' '),
                 n.createElement(Rh, { compact: !0, inline: !0, source: e }),
               );
             }),
@@ -42894,83 +42996,16 @@
       `\ncursor: default;\n&::before {\n  content: "—";\n  font-weight: bold;\n  width: 1.5em;\n  text-align: center;\n  display: inline-block;\n  vertical-align: top;\n  position: absolute;\n  right: 10px;\n  color: ${e.theme.colors.text.primary}\n}\n&:focus {\n  outline: 0;\n}\n`) ||
     ''};
 `,
-          Eb = wa.div`
+          jb = wa.div`
   padding: 10px;
 `,
-          _b = wa(Au.withComponent('caption'))`
-  text-align: left;
-  margin-top: 1em;
-  caption-side: top;
-`,
-          Ab = wa.strong`
+          Ib = wa.strong`
   vertical-align: top;
 `,
-          Rb = wa.div`
+          Nb = wa.div`
   position: relative;
-`;
-        class Cb extends n.PureComponent {
-          render() {
-            const { headers: e } = this.props;
-            return void 0 === e || 0 === e.length
-              ? null
-              : n.createElement(
-                  Qu,
-                  null,
-                  n.createElement(_b, null, ' Response Headers '),
-                  n.createElement(
-                    'tbody',
-                    null,
-                    ro(e, (e, t) =>
-                      n.createElement(qg, { isLast: t, key: e.name, field: e, showExamples: !0 }),
-                    ),
-                  ),
-                );
-          }
-        }
-        var Tb = Object.defineProperty,
-          Pb = Object.getOwnPropertySymbols,
-          jb = Object.prototype.hasOwnProperty,
-          Ib = Object.prototype.propertyIsEnumerable,
-          Nb = (e, t, n) =>
-            t in e
-              ? Tb(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
-              : (e[t] = n);
-        class $b extends n.PureComponent {
-          constructor() {
-            super(...arguments),
-              (this.renderDropdown = e =>
-                n.createElement(
-                  Au,
-                  { key: 'header' },
-                  'Response Schema: ',
-                  n.createElement(
-                    yh,
-                    ((e, t) => {
-                      for (var n in t || (t = {})) jb.call(t, n) && Nb(e, n, t[n]);
-                      if (Pb) for (var n of Pb(t)) Ib.call(t, n) && Nb(e, n, t[n]);
-                      return e;
-                    })({}, e),
-                  ),
-                ));
-          }
-          render() {
-            const { description: e, extensions: t, headers: r, content: o } = this.props.response;
-            return n.createElement(
-              n.Fragment,
-              null,
-              e && n.createElement(Rh, { source: e }),
-              n.createElement(hg, { extensions: t }),
-              n.createElement(Cb, { headers: r }),
-              n.createElement(
-                hb,
-                { content: o, renderDropdown: this.renderDropdown },
-                ({ schema: e }) =>
-                  n.createElement(dy, { skipWriteOnly: !0, key: 'schema', schema: e }),
-              ),
-            );
-          }
-        }
-        const Lb = Gm(({ response: e }) => {
+`,
+          $b = Gm(({ response: e }) => {
             const {
                 extensions: t,
                 headers: r,
@@ -42993,7 +43028,7 @@
             return n.createElement(
               'div',
               null,
-              n.createElement(Sb, {
+              n.createElement(Pb, {
                 onClick: () => e.toggle(),
                 type: o,
                 empty: p,
@@ -43001,30 +43036,30 @@
                 code: s,
                 opened: l,
               }),
-              l && !p && n.createElement(Eb, null, n.createElement($b, { response: e })),
+              l && !p && n.createElement(jb, null, n.createElement(Tb, { response: e })),
             );
           }),
-          Db = wa.h3`
+          Lb = wa.h3`
   font-size: 1.3em;
   padding: 0.2em 0;
   margin: 3em 0 1.1em;
   color: ${({ theme: e }) => e.colors.text.primary};
   font-weight: normal;
 `;
-        class Mb extends n.PureComponent {
+        class Db extends n.PureComponent {
           render() {
             const { responses: e, isCallback: t } = this.props;
             return e && 0 !== e.length
               ? n.createElement(
-                  Rb,
+                  Nb,
                   null,
-                  n.createElement(Db, null, mo(t ? 'callbackResponses' : 'responses')),
-                  e.map(e => n.createElement(Lb, { key: e.code, response: e })),
+                  n.createElement(Lb, null, mo(t ? 'callbackResponses' : 'responses')),
+                  e.map(e => n.createElement($b, { key: e.code, response: e })),
                 )
               : null;
           }
         }
-        const Fb = wa.ul`
+        const Mb = wa.ul`
   display: inline;
   list-style: none;
   padding: 0;
@@ -43040,7 +43075,7 @@
     }
   }
 `,
-          zb = wa.code`
+          Fb = wa.code`
   font-size: ${e => e.theme.typography.code.fontSize};
   font-family: ${e => e.theme.typography.code.fontFamily};
   border: 1px solid ${({ theme: e }) => e.colors.border.dark};
@@ -43049,7 +43084,7 @@
   display: inline-block;
   line-height: 1;
 `,
-          Ub = wa.span`
+          zb = wa.span`
   &:after {
     content: ' AND ';
     font-weight: bold;
@@ -43061,7 +43096,7 @@
 
   ${vh};
 `,
-          Bb = wa.span`
+          Ub = wa.span`
   &:before {
     content: '( ';
     font-weight: bold;
@@ -43081,43 +43116,43 @@
 
   ${vh};
 `;
-        class qb extends n.PureComponent {
+        class Bb extends n.PureComponent {
           render() {
             const e = this.props.security;
             return n.createElement(
-              Bb,
+              Ub,
               null,
               e.schemes.length
                 ? e.schemes.map(e =>
                     n.createElement(
-                      Ub,
+                      zb,
                       { key: e.id },
-                      n.createElement(Iu, { to: e.sectionId }, e.displayName),
+                      n.createElement(Du, { to: e.sectionId }, e.displayName),
                       e.scopes.length > 0 && ' (',
                       n.createElement(
-                        Fb,
+                        Mb,
                         null,
                         e.scopes.map(e =>
-                          n.createElement('li', { key: e }, n.createElement(zb, null, e)),
+                          n.createElement('li', { key: e }, n.createElement(Fb, null, e)),
                         ),
                       ),
                       e.scopes.length > 0 && ') ',
                     ),
                   )
-                : n.createElement(Ub, null, 'None'),
+                : n.createElement(zb, null, 'None'),
             );
           }
         }
-        const Vb = wa.div`
+        const qb = wa.div`
   flex: 1 1 auto;
 `,
-          Wb = wa.div`
+          Vb = wa.div`
   width: ${e => e.theme.schema.defaultDetailsWidth};
   ${xa('small')`
     margin-top: 10px;
   `}
 `,
-          Hb = wa(Au)`
+          Wb = wa(Pu)`
   display: inline-block;
   margin: 0;
 
@@ -43125,7 +43160,7 @@
     display: none;
   }
 `,
-          Yb = wa.div`
+          Hb = wa.div`
   width: 100%;
   display: flex;
   margin: 1em 0;
@@ -43134,25 +43169,25 @@
     flex-direction: column;
   `}
 `;
-        class Qb extends n.PureComponent {
+        class Yb extends n.PureComponent {
           render() {
             const e = this.props.securities;
             return e.length
               ? n.createElement(
-                  Yb,
+                  Hb,
                   null,
-                  n.createElement(Vb, null, n.createElement(Hb, null, 'Authorizations: ')),
+                  n.createElement(qb, null, n.createElement(Wb, null, 'Authorizations: ')),
                   n.createElement(
-                    Wb,
+                    Vb,
                     null,
-                    e.map((e, t) => n.createElement(qb, { key: t, security: e })),
+                    e.map((e, t) => n.createElement(Bb, { key: t, security: e })),
                   ),
                 )
               : null;
           }
         }
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let Gb = class extends n.Component {
+        let Qb = class extends n.Component {
           render() {
             const { operation: e } = this.props,
               { description: t, externalDocs: r } = e,
@@ -43162,28 +43197,28 @@
               null,
               o &&
                 n.createElement(
-                  Xb,
+                  Gb,
                   null,
                   void 0 !== t && n.createElement(Rh, { source: t }),
                   r && n.createElement(ug, { externalDocs: r }),
                 ),
               n.createElement(db, { operation: this.props.operation, inverted: !0, compact: !0 }),
               n.createElement(hg, { extensions: e.extensions }),
-              n.createElement(Qb, { securities: e.security }),
+              n.createElement(Yb, { securities: e.security }),
               n.createElement(wb, { parameters: e.parameters, body: e.requestBody }),
-              n.createElement(Mb, { responses: e.responses, isCallback: e.isCallback }),
+              n.createElement(Db, { responses: e.responses, isCallback: e.isCallback }),
             );
           }
         };
-        Gb = ((e, t, n, r) => {
+        Qb = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], Gb);
-        const Xb = wa.div`
+        })([Gm], Qb);
+        const Gb = wa.div`
   margin-bottom: ${({ theme: e }) => 3 * e.spacing.unit}px;
 `;
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let Kb = class extends n.Component {
+        let Xb = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.toggle = () => {
@@ -43207,32 +43242,32 @@
                 httpVerb: r,
                 deprecated: o,
               }),
-              t && n.createElement(Gb, { operation: this.props.callbackOperation }),
+              t && n.createElement(Qb, { operation: this.props.callbackOperation }),
             );
           }
         };
-        Kb = ((e, t, n, r) => {
+        Xb = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], Kb);
-        class Zb extends n.PureComponent {
+        })([Gm], Xb);
+        class Kb extends n.PureComponent {
           render() {
             const { callbacks: e } = this.props;
             return e && 0 !== e.length
               ? n.createElement(
                   'div',
                   null,
-                  n.createElement(Jb, null, ' Callbacks '),
+                  n.createElement(Zb, null, ' Callbacks '),
                   e.map(e =>
                     e.operations.map((t, r) =>
-                      n.createElement(Kb, { key: `${e.name}_${r}`, callbackOperation: t }),
+                      n.createElement(Xb, { key: `${e.name}_${r}`, callbackOperation: t }),
                     ),
                   ),
                 )
               : null;
           }
         }
-        const Jb = wa.h3`
+        const Zb = wa.h3`
   font-size: 1.3em;
   padding: 0.2em 0;
   margin: 3em 0 1.1em;
@@ -43240,7 +43275,7 @@
   font-weight: normal;
 `;
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let ev = class extends n.Component {
+        let Jb = class extends n.Component {
           constructor(e) {
             super(e),
               (this.switchItem = ({ idx: e }) => {
@@ -43272,27 +43307,27 @@
             );
           }
         };
-        ev = ((e, t, n, r) => {
+        Jb = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], ev);
-        var tv = Object.defineProperty,
-          nv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
-          rv = Object.prototype.hasOwnProperty,
-          ov = Object.prototype.propertyIsEnumerable,
-          iv = (e, t, n) =>
+        })([Gm], Jb);
+        var ev = Object.defineProperty,
+          tv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
+          nv = Object.prototype.hasOwnProperty,
+          rv = Object.prototype.propertyIsEnumerable,
+          ov = (e, t, n) =>
             t in e
-              ? tv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? ev(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n);
-        let av = class extends n.Component {
+        let iv = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.renderDropdown = e =>
                 n.createElement(
                   yh,
                   ((e, t) => {
-                    for (var n in t || (t = {})) rv.call(t, n) && iv(e, n, t[n]);
-                    if (nv) for (var n of nv(t)) ov.call(t, n) && iv(e, n, t[n]);
+                    for (var n in t || (t = {})) nv.call(t, n) && ov(e, n, t[n]);
+                    if (tv) for (var n of tv(t)) rv.call(t, n) && ov(e, n, t[n]);
                     return e;
                   })({ Label: em, Dropdown: rm }, e),
                 ));
@@ -43313,38 +43348,38 @@
                 );
           }
         };
-        av = ((e, t, n, r) => {
+        iv = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], av);
-        class sv extends n.Component {
+        })([Gm], iv);
+        class av extends n.Component {
           render() {
             const e = this.props.callback.codeSamples.find(e => hu(e));
             return e
-              ? n.createElement(lv, null, n.createElement(av, { content: e.requestBodyContent }))
+              ? n.createElement(sv, null, n.createElement(iv, { content: e.requestBodyContent }))
               : null;
           }
         }
-        const lv = wa.div`
+        const sv = wa.div`
   margin-top: 15px;
 `;
-        var cv = Object.defineProperty,
-          uv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
-          pv = Object.prototype.hasOwnProperty,
-          dv = Object.prototype.propertyIsEnumerable,
-          fv = (e, t, n) =>
+        var lv = Object.defineProperty,
+          cv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
+          uv = Object.prototype.hasOwnProperty,
+          pv = Object.prototype.propertyIsEnumerable,
+          dv = (e, t, n) =>
             t in e
-              ? cv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? lv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n);
-        let hv = class extends n.Component {
+        let fv = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.renderDropdown = e =>
                 n.createElement(
                   yh,
                   ((e, t) => {
-                    for (var n in t || (t = {})) pv.call(t, n) && fv(e, n, t[n]);
-                    if (uv) for (var n of uv(t)) dv.call(t, n) && fv(e, n, t[n]);
+                    for (var n in t || (t = {})) uv.call(t, n) && dv(e, n, t[n]);
+                    if (cv) for (var n of cv(t)) pv.call(t, n) && dv(e, n, t[n]);
                     return e;
                   })({ Label: em, Dropdown: rm }, e),
                 ));
@@ -43361,15 +43396,15 @@
             return n.createElement(
               'div',
               null,
-              n.createElement(_u, null, ' Callback payload samples '),
+              n.createElement(Tu, null, ' Callback payload samples '),
               n.createElement(
-                mv,
+                hv,
                 null,
                 n.createElement(
-                  ev,
+                  Jb,
                   { items: t, renderDropdown: this.renderDropdown, label: 'Callback', options: r },
                   e =>
-                    n.createElement(sv, {
+                    n.createElement(av, {
                       key: 'callbackPayloadSample',
                       callback: e,
                       renderDropdown: this.renderDropdown,
@@ -43379,17 +43414,17 @@
             );
           }
         };
-        (hv.contextType = Ta),
-          (hv = ((e, t, n, r) => {
+        (fv.contextType = Ta),
+          (fv = ((e, t, n, r) => {
             for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
             return i;
-          })([Gm], hv));
-        const mv = wa.div`
+          })([Gm], fv));
+        const hv = wa.div`
   background: ${({ theme: e }) => e.codeBlock.backgroundColor};
   padding: ${e => 4 * e.theme.spacing.unit}px;
 `;
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let gv = class extends n.Component {
+        let mv = class extends n.Component {
           render() {
             const { operation: e } = this.props,
               t = e.codeSamples,
@@ -43400,7 +43435,7 @@
                 n.createElement(
                   'div',
                   null,
-                  n.createElement(_u, null, ' ', mo('requestSamples'), ' '),
+                  n.createElement(Tu, null, ' ', mo('requestSamples'), ' '),
                   n.createElement(
                     bd,
                     { defaultIndex: 0 },
@@ -43423,7 +43458,7 @@
                           ? n.createElement(
                               'div',
                               null,
-                              n.createElement(av, { content: e.requestBodyContent }),
+                              n.createElement(iv, { content: e.requestBodyContent }),
                             )
                           : n.createElement(Xh, { lang: e.lang, source: e.source }),
                       ),
@@ -43434,13 +43469,13 @@
             );
           }
         };
-        (gv.contextType = Ta),
-          (gv = ((e, t, n, r) => {
+        (mv.contextType = Ta),
+          (mv = ((e, t, n, r) => {
             for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
             return i;
-          })([Gm], gv));
+          })([Gm], mv));
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let yv = class extends n.Component {
+        let gv = class extends n.Component {
           render() {
             const { operation: e } = this.props,
               t = e.responses.filter(e => e.content && e.content.hasSample);
@@ -43449,7 +43484,7 @@
                 n.createElement(
                   'div',
                   null,
-                  n.createElement(_u, null, ' ', mo('responseSamples'), ' '),
+                  n.createElement(Tu, null, ' ', mo('responseSamples'), ' '),
                   n.createElement(
                     bd,
                     { defaultIndex: 0 },
@@ -43464,7 +43499,7 @@
                       n.createElement(
                         yd,
                         { key: e.code },
-                        n.createElement('div', null, n.createElement(av, { content: e.content })),
+                        n.createElement('div', null, n.createElement(iv, { content: e.content })),
                       ),
                     ),
                   ),
@@ -43473,24 +43508,24 @@
             );
           }
         };
-        yv = ((e, t, n, r) => {
+        gv = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], yv);
-        var bv = Object.defineProperty,
-          vv = Object.defineProperties,
-          xv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertyDescriptors),
-          wv = Object.getOwnPropertySymbols,
-          kv = Object.prototype.hasOwnProperty,
-          Ov = Object.prototype.propertyIsEnumerable,
-          Sv = (e, t, n) =>
+        })([Gm], gv);
+        var yv = Object.defineProperty,
+          bv = Object.defineProperties,
+          vv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertyDescriptors),
+          xv = Object.getOwnPropertySymbols,
+          wv = Object.prototype.hasOwnProperty,
+          kv = Object.prototype.propertyIsEnumerable,
+          Ov = (e, t, n) =>
             t in e
-              ? bv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? yv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n);
-        const Ev = wa.div`
+        const Sv = wa.div`
   margin-bottom: ${({ theme: e }) => 6 * e.spacing.unit}px;
 `;
-        let _v = class extends n.Component {
+        let Ev = class extends n.Component {
           render() {
             const { operation: e } = this.props,
               { name: t, description: r, deprecated: o, externalDocs: i, isWebhook: a } = e,
@@ -43498,10 +43533,10 @@
             return n.createElement(Ta.Consumer, null, l =>
               n.createElement(
                 xu,
-                ((e, t) => vv(e, xv(t)))(
+                ((e, t) => bv(e, vv(t)))(
                   ((e, t) => {
-                    for (var n in t || (t = {})) kv.call(t, n) && Sv(e, n, t[n]);
-                    if (wv) for (var n of wv(t)) Ov.call(t, n) && Sv(e, n, t[n]);
+                    for (var n in t || (t = {})) wv.call(t, n) && Ov(e, n, t[n]);
+                    if (xv) for (var n of xv(t)) kv.call(t, n) && Ov(e, n, t[n]);
                     return e;
                   })({}, { [rh]: e.operationHash }),
                   { id: e.operationHash },
@@ -43510,75 +43545,75 @@
                   yu,
                   null,
                   n.createElement(
-                    Eu,
+                    Cu,
                     null,
-                    n.createElement($u, { to: e.id }),
+                    n.createElement(Fu, { to: e.id }),
                     t,
                     ' ',
-                    o && n.createElement(Fu, { type: 'warning' }, ' Deprecated '),
-                    a && n.createElement(Fu, { type: 'primary' }, ' Webhook '),
+                    o && n.createElement(Su, { type: 'warning' }, ' Deprecated '),
+                    a && n.createElement(Su, { type: 'primary' }, ' Webhook '),
                   ),
                   l.pathInMiddlePanel && !a && n.createElement(db, { operation: e, inverted: !0 }),
                   s &&
                     n.createElement(
-                      Ev,
+                      Sv,
                       null,
                       void 0 !== r && n.createElement(Rh, { source: r }),
                       i && n.createElement(ug, { externalDocs: i }),
                     ),
                   n.createElement(hg, { extensions: e.extensions }),
-                  n.createElement(Qb, { securities: e.security }),
+                  n.createElement(Yb, { securities: e.security }),
                   n.createElement(wb, { parameters: e.parameters, body: e.requestBody }),
-                  n.createElement(Mb, { responses: e.responses }),
-                  n.createElement(Zb, { callbacks: e.callbacks }),
+                  n.createElement(Db, { responses: e.responses }),
+                  n.createElement(Kb, { callbacks: e.callbacks }),
                 ),
                 n.createElement(
                   vu,
                   null,
                   !l.pathInMiddlePanel && !a && n.createElement(db, { operation: e }),
+                  n.createElement(mv, { operation: e }),
                   n.createElement(gv, { operation: e }),
-                  n.createElement(yv, { operation: e }),
-                  n.createElement(hv, { callbacks: e.callbacks }),
+                  n.createElement(fv, { callbacks: e.callbacks }),
                 ),
               ),
             );
           }
         };
-        _v = ((e, t, n, r) => {
+        Ev = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], _v);
-        const Av = wa(Su)`
+        })([Gm], Ev);
+        const _v = wa(Ru)`
   margin-top: 0;
   margin-bottom: 0;
 `;
-        var Rv = Object.defineProperty,
-          Cv = Object.getOwnPropertyDescriptor,
-          Tv = Object.getOwnPropertySymbols,
-          Pv = Object.prototype.hasOwnProperty,
-          jv = Object.prototype.propertyIsEnumerable,
-          Iv = (e, t, n) =>
+        var Av = Object.defineProperty,
+          Rv = Object.getOwnPropertyDescriptor,
+          Cv = Object.getOwnPropertySymbols,
+          Tv = Object.prototype.hasOwnProperty,
+          Pv = Object.prototype.propertyIsEnumerable,
+          jv = (e, t, n) =>
             t in e
-              ? Rv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? Av(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n),
-          Nv = (e, t) => {
-            for (var n in t || (t = {})) Pv.call(t, n) && Iv(e, n, t[n]);
-            if (Tv) for (var n of Tv(t)) jv.call(t, n) && Iv(e, n, t[n]);
+          Iv = (e, t) => {
+            for (var n in t || (t = {})) Tv.call(t, n) && jv(e, n, t[n]);
+            if (Cv) for (var n of Cv(t)) Pv.call(t, n) && jv(e, n, t[n]);
             return e;
           },
-          $v = (e, t, n, r) => {
-            for (var o, i = r > 1 ? void 0 : r ? Cv(t, n) : t, a = e.length - 1; a >= 0; a--)
+          Nv = (e, t, n, r) => {
+            for (var o, i = r > 1 ? void 0 : r ? Rv(t, n) : t, a = e.length - 1; a >= 0; a--)
               (o = e[a]) && (i = (r ? o(t, n, i) : o(i)) || i);
-            return r && i && Rv(t, n, i), i;
+            return r && i && Av(t, n, i), i;
           };
-        let Lv = class extends n.Component {
+        let $v = class extends n.Component {
           render() {
             const e = this.props.items;
-            return 0 === e.length ? null : e.map(e => n.createElement(Dv, { key: e.id, item: e }));
+            return 0 === e.length ? null : e.map(e => n.createElement(Lv, { key: e.id, item: e }));
           }
         };
-        Lv = $v([Gm], Lv);
-        let Dv = class extends n.Component {
+        $v = Nv([Gm], $v);
+        let Lv = class extends n.Component {
           render() {
             const e = this.props.item;
             let t;
@@ -43589,28 +43624,28 @@
                 break;
               case 'tag':
               case 'section':
-                t = n.createElement(Fv, Nv({}, this.props));
+                t = n.createElement(Mv, Iv({}, this.props));
                 break;
               case 'operation':
-                t = n.createElement(zv, { item: e });
+                t = n.createElement(Fv, { item: e });
                 break;
               default:
-                t = n.createElement(Fv, Nv({}, this.props));
+                t = n.createElement(Mv, Iv({}, this.props));
             }
             return n.createElement(
               n.Fragment,
               null,
               t && n.createElement(bu, { id: e.id, underlined: 'operation' === e.type }, t),
-              e.items && n.createElement(Lv, { items: e.items }),
+              e.items && n.createElement($v, { items: e.items }),
             );
           }
         };
-        Dv = $v([Gm], Dv);
-        const Mv = e => n.createElement(yu, { compact: !0 }, e);
-        let Fv = class extends n.Component {
+        Lv = Nv([Gm], Lv);
+        const Dv = e => n.createElement(yu, { compact: !0 }, e);
+        let Mv = class extends n.Component {
           render() {
             const { name: e, description: t, externalDocs: r, level: o } = this.props.item,
-              i = 2 === o ? Eu : Av;
+              i = 2 === o ? Cu : _v;
             return n.createElement(
               n.Fragment,
               null,
@@ -43620,10 +43655,10 @@
                 n.createElement(
                   yu,
                   { compact: 1 === o },
-                  n.createElement(i, null, n.createElement($u, { to: this.props.item.id }), e),
+                  n.createElement(i, null, n.createElement(Fu, { to: this.props.item.id }), e),
                 ),
               ),
-              n.createElement(Uy, { source: t || '', htmlWrap: Mv }),
+              n.createElement(Uy, { source: t || '', htmlWrap: Dv }),
               r &&
                 n.createElement(
                   xu,
@@ -43633,30 +43668,30 @@
             );
           }
         };
-        Fv = $v([Gm], Fv);
-        let zv = class extends n.Component {
+        Mv = Nv([Gm], Mv);
+        let Fv = class extends n.Component {
           render() {
-            return n.createElement(_v, { operation: this.props.item });
+            return n.createElement(Ev, { operation: this.props.item });
           }
         };
-        zv = $v([Gm], zv);
-        var Uv = Object.defineProperty,
-          Bv = Object.defineProperties,
-          qv = Object.getOwnPropertyDescriptor,
-          Vv = Object.getOwnPropertyDescriptors,
-          Wv = Object.getOwnPropertySymbols,
-          Hv = Object.prototype.hasOwnProperty,
-          Yv = Object.prototype.propertyIsEnumerable,
-          Qv = (e, t, n) =>
+        Fv = Nv([Gm], Fv);
+        var zv = Object.defineProperty,
+          Uv = Object.defineProperties,
+          Bv = Object.getOwnPropertyDescriptor,
+          qv = Object.getOwnPropertyDescriptors,
+          Vv = Object.getOwnPropertySymbols,
+          Wv = Object.prototype.hasOwnProperty,
+          Hv = Object.prototype.propertyIsEnumerable,
+          Yv = (e, t, n) =>
             t in e
-              ? Uv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? zv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n),
-          Gv = (e, t, n, r) => {
-            for (var o, i = r > 1 ? void 0 : r ? qv(t, n) : t, a = e.length - 1; a >= 0; a--)
+          Qv = (e, t, n, r) => {
+            for (var o, i = r > 1 ? void 0 : r ? Bv(t, n) : t, a = e.length - 1; a >= 0; a--)
               (o = e[a]) && (i = (r ? o(t, n, i) : o(i)) || i);
-            return r && i && Uv(t, n, i), i;
+            return r && i && zv(t, n, i), i;
           };
-        let Xv = class extends n.Component {
+        let Gv = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.ref = n.createRef()),
@@ -43680,11 +43715,11 @@
               { onClick: this.activate, depth: e.depth, 'data-item-id': e.id },
               'operation' === e.type
                 ? n.createElement(
-                    Kv,
-                    ((e, t) => Bv(e, Vv(t)))(
+                    Xv,
+                    ((e, t) => Uv(e, qv(t)))(
                       ((e, t) => {
-                        for (var n in t || (t = {})) Hv.call(t, n) && Qv(e, n, t[n]);
-                        if (Wv) for (var n of Wv(t)) Yv.call(t, n) && Qv(e, n, t[n]);
+                        for (var n in t || (t = {})) Wv.call(t, n) && Yv(e, n, t[n]);
+                        if (Vv) for (var n of Vv(t)) Hv.call(t, n) && Yv(e, n, t[n]);
                         return e;
                       })({}, this.props),
                       { item: e },
@@ -43701,7 +43736,7 @@
                     ),
                     (e.depth > 0 &&
                       e.items.length > 0 &&
-                      n.createElement(Mu, {
+                      n.createElement(Ou, {
                         float: 'right',
                         direction: e.expanded ? 'up' : 'down',
                       })) ||
@@ -43710,7 +43745,7 @@
               !t &&
                 e.items &&
                 e.items.length > 0 &&
-                n.createElement(rx, {
+                n.createElement(nx, {
                   expanded: e.expanded,
                   items: e.items,
                   onActivate: this.props.onActivate,
@@ -43718,8 +43753,8 @@
             );
           }
         };
-        Xv = Gv([Gm], Xv);
-        let Kv = class extends n.Component {
+        Gv = Qv([Gm], Gv);
+        let Xv = class extends n.Component {
           constructor() {
             super(...arguments), (this.ref = n.createRef());
           }
@@ -43743,41 +43778,41 @@
             );
           }
         };
-        Kv = Gv([Gm], Kv);
-        var Zv = Object.defineProperty,
-          Jv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
-          ex = Object.prototype.hasOwnProperty,
-          tx = Object.prototype.propertyIsEnumerable,
-          nx = (e, t, n) =>
+        Xv = Qv([Gm], Xv);
+        var Kv = Object.defineProperty,
+          Zv = (Object.getOwnPropertyDescriptor, Object.getOwnPropertySymbols),
+          Jv = Object.prototype.hasOwnProperty,
+          ex = Object.prototype.propertyIsEnumerable,
+          tx = (e, t, n) =>
             t in e
-              ? Zv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? Kv(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n);
-        let rx = class extends n.Component {
+        let nx = class extends n.Component {
           render() {
             const { items: e, root: t, className: r } = this.props,
               o = null == this.props.expanded || this.props.expanded;
             return n.createElement(
               Hy,
               ((e, t) => {
-                for (var n in t || (t = {})) ex.call(t, n) && nx(e, n, t[n]);
-                if (Jv) for (var n of Jv(t)) tx.call(t, n) && nx(e, n, t[n]);
+                for (var n in t || (t = {})) Jv.call(t, n) && tx(e, n, t[n]);
+                if (Zv) for (var n of Zv(t)) ex.call(t, n) && tx(e, n, t[n]);
                 return e;
               })(
                 { className: r, style: this.props.style, expanded: o },
                 t ? { role: 'navigation' } : {},
               ),
               e.map((e, t) =>
-                n.createElement(Xv, { key: t, item: e, onActivate: this.props.onActivate }),
+                n.createElement(Gv, { key: t, item: e, onActivate: this.props.onActivate }),
               ),
             );
           }
         };
-        rx = ((e, t, n, r) => {
+        nx = ((e, t, n, r) => {
           for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
           return i;
-        })([Gm], rx);
+        })([Gm], nx);
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let ox = class extends n.Component {
+        let rx = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.activate = e => {
@@ -43801,7 +43836,7 @@
                 className: this.props.className,
                 options: { wheelPropagation: !1 },
               },
-              n.createElement(rx, { items: e.items, onActivate: this.activate, root: !0 }),
+              n.createElement(nx, { items: e.items, onActivate: this.activate, root: !0 }),
               n.createElement(
                 Ky,
                 null,
@@ -43818,24 +43853,24 @@
             );
           }
         };
-        (ox.contextType = Ta),
-          (ox = ((e, t, n, r) => {
+        (rx.contextType = Ta),
+          (rx = ((e, t, n, r) => {
             for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
             return i;
-          })([Gm], ox));
-        const ix = ({ open: e }) => {
+          })([Gm], rx));
+        const ox = ({ open: e }) => {
             const t = e ? 8 : -4;
             return n.createElement(
-              sx,
+              ax,
               null,
-              n.createElement(ax, {
+              n.createElement(ix, {
                 size: 15,
                 style: {
                   transform: `translate(2px, ${t}px) rotate(180deg)`,
                   transition: 'transform 0.2s ease',
                 },
               }),
-              n.createElement(ax, {
+              n.createElement(ix, {
                 size: 15,
                 style: {
                   transform: `translate(2px, ${0 - t}px)`,
@@ -43844,7 +43879,7 @@
               }),
             );
           },
-          ax = ({ size: e = 10, className: t = '', style: r }) =>
+          ix = ({ size: e = 10, className: t = '', style: r }) =>
             n.createElement(
               'svg',
               {
@@ -43866,7 +43901,7 @@
                 }),
               ),
             ),
-          sx = wa.div`
+          ax = wa.div`
   user-select: none;
   width: 20px;
   height: 20px;
@@ -43876,10 +43911,10 @@
   color: ${e => e.theme.colors.primary.main};
 `;
         Object.defineProperty, Object.getOwnPropertyDescriptor;
-        let lx;
-        Vr && (lx = r(5114));
-        const cx = lx && lx(),
-          ux = wa.div`
+        let sx;
+        Vr && (sx = r(5114));
+        const lx = sx && sx(),
+          cx = wa.div`
   width: ${e => e.theme.sidebar.width};
   background-color: ${e => e.theme.sidebar.backgroundColor};
   overflow: hidden;
@@ -43906,7 +43941,7 @@
     display: none;
   }
 `,
-          px = wa.div`
+          ux = wa.div`
   outline: none;
   user-select: none;
   background-color: ${({ theme: e }) => e.fab.backgroundColor};
@@ -43935,7 +43970,7 @@
     display: none;
   }
 `;
-        let dx = class extends n.Component {
+        let px = class extends n.Component {
           constructor() {
             super(...arguments),
               (this.state = { offsetTop: '0px' }),
@@ -43944,11 +43979,11 @@
               });
           }
           componentDidMount() {
-            cx && cx.add(this.stickyElement),
+            lx && lx.add(this.stickyElement),
               this.setState({ offsetTop: this.getScrollYOffset(this.context) });
           }
           componentWillUnmount() {
-            cx && cx.remove(this.stickyElement);
+            lx && lx.remove(this.stickyElement);
           }
           getScrollYOffset(e) {
             let t;
@@ -43967,7 +44002,7 @@
               n.Fragment,
               null,
               n.createElement(
-                ux,
+                cx,
                 {
                   open: e,
                   className: this.props.className,
@@ -43980,19 +44015,19 @@
               ),
               !this.context.hideFab &&
                 n.createElement(
-                  px,
+                  ux,
                   { onClick: this.toggleNavMenu },
-                  n.createElement(ix, { open: e }),
+                  n.createElement(ox, { open: e }),
                 ),
             );
           }
         };
-        (dx.contextType = Ta),
-          (dx = ((e, t, n, r) => {
+        (px.contextType = Ta),
+          (px = ((e, t, n, r) => {
             for (var o, i = t, a = e.length - 1; a >= 0; a--) (o = e[a]) && (i = o(i) || i);
             return i;
-          })([Gm], dx));
-        const fx = wa.div`
+          })([Gm], px));
+        const dx = wa.div`
   ${({ theme: e }) =>
     `\n  font-family: ${e.typography.fontFamily};\n  font-size: ${
       e.typography.fontSize
@@ -44006,7 +44041,7 @@
       e.typography.optimizeSpeed ? 'text-rendering: optimizeSpeed !important' : ''
     };\n\n  tap-highlight-color: rgba(0, 0, 0, 0);\n  text-size-adjust: 100%;\n\n  * {\n    box-sizing: border-box;\n    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);\n  }\n`};
 `,
-          hx = wa.div`
+          fx = wa.div`
   z-index: 1;
   position: relative;
   overflow: hidden;
@@ -44017,7 +44052,7 @@
 
   contain: layout;
 `,
-          mx = wa.div`
+          hx = wa.div`
   background: ${({ theme: e }) => e.rightPanel.backgroundColor};
   position: absolute;
   top: 0;
@@ -44034,12 +44069,12 @@
     display: none;
   `};
 `,
-          gx = wa.div`
+          mx = wa.div`
   padding: 5px 0;
   margin: 25px 0;
   position: relative;
 `,
-          yx = wa.input.attrs(() => ({ className: 'search-input' }))`
+          gx = wa.input.attrs(() => ({ className: 'search-input' }))`
   width: calc(100% - ${e => 8 * e.theme.spacing.unit}px);
   box-sizing: border-box;
   margin: 0 ${e => 4 * e.theme.spacing.unit}px;
@@ -44054,7 +44089,7 @@
   color: ${e => e.theme.sidebar.textColor};
   outline: none;
 `,
-          bx = wa(e =>
+          yx = wa(e =>
             n.createElement(
               'svg',
               {
@@ -44080,7 +44115,7 @@
     fill: ${e => e.theme.sidebar.textColor};
   }
 `,
-          vx = wa.div`
+          bx = wa.div`
   padding: ${e => e.theme.spacing.unit}px 0;
   background-color: ${({ theme: e }) => Pr(0.05, e.sidebar.backgroundColor)}};
   color: ${e => e.theme.sidebar.textColor};
@@ -44110,7 +44145,7 @@
     }
   }
 `,
-          xx = wa.i`
+          vx = wa.i`
   position: absolute;
   display: inline-block;
   width: ${e => 2 * e.theme.spacing.unit}px;
@@ -44123,9 +44158,9 @@
   font-style: normal;
   color: '#666';
 `;
-        var wx = Object.defineProperty,
-          kx = Object.getOwnPropertyDescriptor;
-        class Ox extends n.PureComponent {
+        var xx = Object.defineProperty,
+          wx = Object.getOwnPropertyDescriptor;
+        class kx extends n.PureComponent {
           constructor(e) {
             super(e),
               (this.activeItemRef = null),
@@ -44184,11 +44219,11 @@
             return (
               t.sort((e, t) => t.score - e.score),
               n.createElement(
-                gx,
+                mx,
                 { role: 'search' },
-                this.state.term && n.createElement(xx, { onClick: this.clear }, '×'),
-                n.createElement(bx, null),
-                n.createElement(yx, {
+                this.state.term && n.createElement(vx, { onClick: this.clear }, '×'),
+                n.createElement(yx, null),
+                n.createElement(gx, {
                   value: this.state.term,
                   onKeyDown: this.handleKeyDown,
                   placeholder: 'Search...',
@@ -44201,10 +44236,10 @@
                     uf,
                     { options: { wheelPropagation: !1 } },
                     n.createElement(
-                      vx,
+                      bx,
                       { 'data-role': 'search:results' },
                       t.map((t, r) =>
-                        n.createElement(Xv, {
+                        n.createElement(Gv, {
                           item: Object.create(t.item, { active: { value: r === e } }),
                           onActivate: this.props.onActivate,
                           withoutChildren: !0,
@@ -44215,18 +44250,18 @@
                     ),
                   ),
                 this.state.term && this.state.noResults
-                  ? n.createElement(vx, { 'data-role': 'search:results' }, mo('noResultsFound'))
+                  ? n.createElement(bx, { 'data-role': 'search:results' }, mo('noResultsFound'))
                   : null,
               )
             );
           }
         }
         ((e, t, n, r) => {
-          for (var o, i = kx(t, n), a = e.length - 1; a >= 0; a--)
+          for (var o, i = wx(t, n), a = e.length - 1; a >= 0; a--)
             (o = e[a]) && (i = o(t, n, i) || i);
-          i && wx(t, n, i);
-        })([La.bind, (0, La.debounce)(400)], Ox.prototype, 'searchCallback');
-        class Sx extends n.Component {
+          i && xx(t, n, i);
+        })([La.bind, (0, La.debounce)(400)], kx.prototype, 'searchCallback');
+        class Ox extends n.Component {
           componentDidMount() {
             this.props.store.onDidMount();
           }
@@ -44242,43 +44277,43 @@
               va,
               { theme: r.theme },
               n.createElement(
-                Cu,
+                Iu,
                 { value: a },
                 n.createElement(
                   Pa,
                   { value: r },
                   n.createElement(
-                    fx,
+                    dx,
                     { className: 'redoc-wrap' },
                     n.createElement(
-                      dx,
+                      px,
                       { menu: t, className: 'menu-content' },
                       n.createElement(Ny, { info: e.info }),
                       (!r.disableSearch &&
-                        n.createElement(Ox, {
+                        n.createElement(kx, {
                           search: o,
                           marker: i,
                           getItemById: t.getItemById,
                           onActivate: t.activateAndScroll,
                         })) ||
                         null,
-                      n.createElement(ox, { menu: t }),
+                      n.createElement(rx, { menu: t }),
                     ),
                     n.createElement(
-                      hx,
+                      fx,
                       { className: 'api-content' },
                       n.createElement(Ty, { store: a }),
-                      n.createElement(Lv, { items: t.items }),
+                      n.createElement($v, { items: t.items }),
                     ),
-                    n.createElement(mx, null),
+                    n.createElement(hx, null),
                   ),
                 ),
               ),
             );
           }
         }
-        Sx.propTypes = { store: Ca.instanceOf(Oy).isRequired };
-        const Ex = function (e) {
+        Ox.propTypes = { store: Ca.instanceOf(Oy).isRequired };
+        const Sx = function (e) {
           const { spec: t, specUrl: o, options: i = {}, onLoaded: a } = e,
             s = Eo(i.hideLoading, !1),
             l = new Ao(i);
@@ -44290,34 +44325,34 @@
             Sa,
             null,
             n.createElement(
-              Pu,
+              $u,
               { spec: t, specUrl: o, options: i, onLoaded: a },
               ({ loading: e, store: t }) =>
                 e
                   ? s
                     ? null
                     : n.createElement(Ra, { color: l.theme.colors.primary.main })
-                  : n.createElement(Sx, { store: t }),
+                  : n.createElement(Ox, { store: t }),
             ),
           );
         };
-        var _x = Object.defineProperty,
-          Ax = Object.getOwnPropertySymbols,
-          Rx = Object.prototype.hasOwnProperty,
-          Cx = Object.prototype.propertyIsEnumerable,
-          Tx = (e, t, n) =>
+        var Ex = Object.defineProperty,
+          _x = Object.getOwnPropertySymbols,
+          Ax = Object.prototype.hasOwnProperty,
+          Rx = Object.prototype.propertyIsEnumerable,
+          Cx = (e, t, n) =>
             t in e
-              ? _x(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
+              ? Ex(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n })
               : (e[t] = n),
-          Px = (e, t) => {
-            for (var n in t || (t = {})) Rx.call(t, n) && Tx(e, n, t[n]);
-            if (Ax) for (var n of Ax(t)) Cx.call(t, n) && Tx(e, n, t[n]);
+          Tx = (e, t) => {
+            for (var n in t || (t = {})) Ax.call(t, n) && Cx(e, n, t[n]);
+            if (_x) for (var n of _x(t)) Rx.call(t, n) && Cx(e, n, t[n]);
             return e;
           };
         $t({ useProxies: 'ifavailable' });
-        const jx = '2.0.0-rc.66',
-          Ix = '6ce721b0';
-        function Nx(e) {
+        const Px = '2.0.0-rc.66',
+          jx = '375fa180';
+        function Ix(e) {
           const t = (function (e) {
               const t = {},
                 n = e.attributes;
@@ -44335,7 +44370,7 @@
           }
           return n;
         }
-        function $x(e, t = {}, r = Wr('redoc'), o) {
+        function Nx(e, t = {}, r = Wr('redoc'), o) {
           if (null === r)
             throw new Error(
               '"element" argument is not provided and <redoc> tag is not found on the page',
@@ -44344,24 +44379,24 @@
           'string' == typeof e ? (a = e) : 'object' == typeof e && (s = e),
             (0, i.render)(
               n.createElement(
-                Ex,
-                { spec: s, onLoaded: o, specUrl: a, options: Px(Px({}, t), Nx(r)) },
+                Sx,
+                { spec: s, onLoaded: o, specUrl: a, options: Tx(Tx({}, t), Ix(r)) },
                 ['Loading...'],
               ),
               r,
             );
         }
-        function Lx(e, t = Wr('redoc'), r) {
+        function $x(e, t = Wr('redoc'), r) {
           const o = Oy.fromJS(e);
           setTimeout(() => {
-            (0, i.hydrate)(n.createElement(Sx, { store: o }), t, r);
+            (0, i.hydrate)(n.createElement(Ox, { store: o }), t, r);
           }, 0);
         }
         !(function () {
           const e = Wr('redoc');
           if (!e) return;
           const t = e.getAttribute('spec-url');
-          t && $x(t, {}, e);
+          t && Nx(t, {}, e);
         })();
       })(),
       o

@@ -1,4 +1,5 @@
 import styled, { css, extensionsHook } from '../styled-components';
+import { ShelfIcon } from './shelfs';
 
 const headerFontSize = {
   1: '24px',
@@ -61,6 +62,7 @@ export const UnderlinedHeader = styled.h5`
   line-height: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &:after {
     content: '';
@@ -69,6 +71,11 @@ export const UnderlinedHeader = styled.h5`
     height: 1px;
     background: #d7dbdf;
     margin: 0 8px;
+  }
+
+  ${ShelfIcon} {
+    order: 1;
+    margin-right: 10px;
   }
 
   ${extensionsHook('UnderlinedHeader')};

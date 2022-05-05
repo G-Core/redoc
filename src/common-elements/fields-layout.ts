@@ -14,11 +14,6 @@ export const PropertyCell = styled.td<{ kind?: string }>`
   position: relative;
   padding: 10px 10px 10px 0;
 
-  ${media.lessThan('small')`
-    display: block;
-    overflow: hidden;
-  `}
-
   tr:first-of-type > &,
   tr.last > & {
     border-left-width: 0;
@@ -94,10 +89,6 @@ export const PropertyNameCell = styled(PropertyCell)`
     left: 1px;
   }
 
-  ${media.lessThan('small')`
-    border-bottom: none;
-  `}
-
   ${({ kind }) => (kind !== 'field' ? 'font-style: italic' : '')};
 
   ${extensionsHook('PropertyNameCell')};
@@ -114,7 +105,7 @@ export const PropertyDetailsCell = styled.td`
     border-bottom: none;
   }
 
-  ${media.lessThan('small')`
+  /* ${media.lessThan('small')`
     padding: 0 20px;
     border-bottom: none;
     border-left: 1px solid #D7DBDF;
@@ -122,7 +113,7 @@ export const PropertyDetailsCell = styled.td`
     tr.last > & {
       border-left: none;
     }
-  `}
+  `} */
 
   ${extensionsHook('PropertyDetailsCell')};
 `;
@@ -202,9 +193,6 @@ export const PropertiesTable = styled.table`
 
   ${media.lessThan('small')`
     display: block;
-    > tr, > tbody > tr {
-      display: block;
-    }
   `}
 
   ${media.lessThan('small', false, ' and (-ms-high-contrast:none)')`

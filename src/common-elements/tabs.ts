@@ -28,18 +28,6 @@ export const Tabs = styled(ReactTabs)`
       font-weight: 500;
       min-width: 60px;
 
-      &.react-tabs__tab--selected {
-        color: ${props => props.theme.colors.text.primary};
-        background: #fff;
-        border: 1px solid #d7dbdf;
-
-        &:focus {
-          color: ${props => props.theme.typography.links.color};
-          border-color: ${props => props.theme.typography.links.color};
-          outline: auto;
-        }
-      }
-
       &:only-child {
         flex: none;
       }
@@ -58,6 +46,16 @@ export const Tabs = styled(ReactTabs)`
 
       &.tab-error {
         color: ${props => props.theme.colors.text.primary};
+      }
+
+      &.react-tabs__tab--selected {
+        color: ${props => props.theme.typography.links.color};
+        background: #fff;
+        border: 1px solid ${props => props.theme.typography.links.color};
+
+        &:focus {
+          outline: auto;
+        }
       }
     }
   }

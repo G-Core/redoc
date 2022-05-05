@@ -10,6 +10,7 @@ import { MediaTypesSwitch } from '../MediaTypeSwitch/MediaTypesSwitch';
 import { Schema } from '../Schema';
 
 import { Markdown } from '../Markdown/Markdown';
+import { ShelfIcon } from '../../common-elements';
 
 function safePush(obj, prop, item) {
   if (!obj[prop]) {
@@ -23,9 +24,24 @@ export interface ParametersProps {
   body?: RequestBodyModel;
 }
 
+export interface ParametersState {
+  expanded: boolean;
+}
+
 const PARAM_PLACES = ['path', 'query', 'cookie', 'header'];
 
-export class Parameters extends React.PureComponent<ParametersProps> {
+export class Parameters extends React.PureComponent<ParametersProps, ParametersState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false,
+    };
+  }
+
+  toggle = () => {
+    this.setState({ expanded: !this.state.expanded });
+  };
+
   orderParams(params: FieldModel[]): Record<string, FieldModel[]> {
     const res = {};
     params.forEach(param => {
@@ -53,7 +69,14 @@ export class Parameters extends React.PureComponent<ParametersProps> {
         {paramsPlaces.map(place => (
           <ParametersGroup key={place} place={place} parameters={paramsMap[place]} />
         ))}
-        {bodyContent && <BodyContent content={bodyContent} description={bodyDescription} />}
+        {bodyContent && (
+          <BodyContent
+            expanded={this.state.expanded}
+            content={bodyContent}
+            description={bodyDescription}
+            onToggle={this.toggle}
+          />
+        )}
       </>
     );
   }
@@ -61,30 +84,40 @@ export class Parameters extends React.PureComponent<ParametersProps> {
 
 function DropdownWithinHeader(props) {
   return (
-    <UnderlinedHeader key="header">
+    <UnderlinedHeader onClick={() => props.onToggle()} key="header">
       Request Body schema: <DropdownOrLabel {...props} />
+      <ShelfIcon size={'1.5em'} direction={props.expanded ? 'up' : 'down'} />
     </UnderlinedHeader>
   );
 }
 
 export function BodyContent(props: {
   content: MediaContentModel;
+  expanded: boolean;
+  onToggle: () => void;
   description?: string;
 }): JSX.Element {
-  const { content, description } = props;
+  const { content, description, expanded, onToggle } = props;
   const { isRequestType } = content;
   return (
-    <MediaTypesSwitch content={content} renderDropdown={DropdownWithinHeader}>
+    <MediaTypesSwitch
+      onToggle={onToggle}
+      expanded={expanded}
+      content={content}
+      renderDropdown={DropdownWithinHeader}
+    >
       {({ schema }) => {
         return (
           <>
-            {description !== undefined && <Markdown source={description} />}
-            <Schema
-              skipReadOnly={isRequestType}
-              skipWriteOnly={!isRequestType}
-              key="schema"
-              schema={schema}
-            />
+            {expanded && description !== undefined && <Markdown source={description} />}
+            {expanded && (
+              <Schema
+                skipReadOnly={isRequestType}
+                skipWriteOnly={!isRequestType}
+                key="schema"
+                schema={schema}
+              />
+            )}
           </>
         );
       }}

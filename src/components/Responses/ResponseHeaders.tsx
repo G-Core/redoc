@@ -4,7 +4,7 @@ import { PropertiesTable } from '../../common-elements/fields-layout';
 import { FieldModel } from '../../services/models';
 import { mapWithLast } from '../../utils';
 import { Field } from '../Fields/Field';
-import { HeadersCaption } from './styled.elements';
+import { UnderlinedHeader } from '../../common-elements';
 
 export interface ResponseHeadersProps {
   headers?: FieldModel[];
@@ -17,14 +17,22 @@ export class ResponseHeaders extends React.PureComponent<ResponseHeadersProps> {
       return null;
     }
     return (
-      <PropertiesTable>
-        <HeadersCaption> Response Headers </HeadersCaption>
-        <tbody>
-          {mapWithLast(headers, (header, isLast) => (
-            <Field isLast={isLast} key={header.name} field={header} showExamples={true} />
-          ))}
-        </tbody>
-      </PropertiesTable>
+      <>
+        <UnderlinedHeader>Response Headers:</UnderlinedHeader>
+        <PropertiesTable>
+          <tbody>
+            {mapWithLast(headers, (header, isLast, isFirst) => (
+              <Field
+                isLast={isLast}
+                isFirst={isFirst}
+                key={header.name}
+                field={header}
+                showExamples={true}
+              />
+            ))}
+          </tbody>
+        </PropertiesTable>
+      </>
     );
   }
 }
