@@ -240,5 +240,11 @@ export const PropertiesTable = styled.table`
     ${InnerPropertiesWrap}
     ${InnerPropertiesWrap} {
     background: #ffffff;
+
+    ${PropertyNameCell} {
+      &:after {
+        background: #fff;
+      }
+    }
   }
 `;
