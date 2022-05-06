@@ -15,6 +15,7 @@ import {
   SearchInput,
   SearchResultsBox,
   SearchWrap,
+  NoResult,
 } from './styled.elements';
 import { l } from '../../services/Labels';
 
@@ -140,7 +141,7 @@ export class SearchBox extends React.PureComponent<SearchBoxProps, SearchBoxStat
     return (
       <SearchWrap role="search">
         {this.state.term && <ClearIcon onClick={this.clear}>×</ClearIcon>}
-        <SearchIcon />
+        {!this.state.term && <SearchIcon />}
         <SearchInput
           value={this.state.term}
           onKeyDown={this.handleKeyDown}
@@ -173,7 +174,9 @@ export class SearchBox extends React.PureComponent<SearchBoxProps, SearchBoxStat
           </PerfectScrollbarWrap>
         )}
         {this.state.term && this.state.noResults ? (
-          <SearchResultsBox data-role="search:results">{l('noResultsFound')}</SearchResultsBox>
+          <SearchResultsBox data-role="search:results">
+            <NoResult>{l('noResultsFound')}</NoResult>
+          </SearchResultsBox>
         ) : null}
       </SearchWrap>
     );

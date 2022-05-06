@@ -48,6 +48,16 @@ export const Tabs = styled(ReactTabs)`
         color: ${props => props.theme.colors.text.primary};
       }
 
+      &:hover {
+        color: #56535f;
+        border-color: #bfc8ce;
+      }
+
+      &:active {
+        color: #56535f;
+        border-color: #a3a7aa;
+      }
+
       &.react-tabs__tab--selected {
         color: ${props => props.theme.typography.links.color};
         background: #fff;

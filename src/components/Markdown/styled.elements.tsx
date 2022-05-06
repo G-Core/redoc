@@ -6,15 +6,19 @@ import { StyledComponent } from 'styled-components';
 
 export const linksCss = css`
   a {
-    text-decoration: none;
+    text-decoration: underline;
     color: ${props => props.theme.typography.links.color};
 
     &:visited {
-      color: ${props => props.theme.typography.links.visited};
+      color: ${props => props.theme.typography.links.color};
     }
 
     &:hover {
       color: ${props => props.theme.typography.links.hover};
+    }
+
+    &:active {
+      color: ${props => props.theme.typography.links.visited};
     }
   }
 `;

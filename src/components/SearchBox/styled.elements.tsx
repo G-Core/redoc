@@ -26,31 +26,38 @@ export const SearchInput = styled.input.attrs(() => ({
   font-size: 13px;
   color: ${props => props.theme.sidebar.textColor};
   outline: none;
+
+  &::placeholder {
+    color: #a5a6a8;
+    font-weight: 500;
+  }
 `;
 
 export const SearchIcon = styled((props: { className?: string }) => (
   <svg
     className={props.className}
-    version="1.1"
-    viewBox="0 0 1000 1000"
-    x="0px"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    y="0px"
   >
-    <path d="M968.2,849.4L667.3,549c83.9-136.5,66.7-317.4-51.7-435.6C477.1-25,252.5-25,113.9,113.4c-138.5,138.3-138.5,362.6,0,501C219.2,730.1,413.2,743,547.6,666.5l301.9,301.4c43.6,43.6,76.9,14.9,104.2-12.4C981,928.3,1011.8,893,968.2,849.4z M524.5,522c-88.9,88.7-233,88.7-321.8,0c-88.9-88.7-88.9-232.6,0-321.3c88.9-88.7,233-88.7,321.8,0C613.4,289.4,613.4,433.3,524.5,522z" />
+    <path
+      d="M14.6673 14.6667L11.2921 11.2915M11.2921 11.2915C12.3477 10.2358 13.0006 8.7775 13.0006 7.16667C13.0006 3.94501 10.389 1.33334 7.16732 1.33334C3.94566 1.33334 1.33398 3.94501 1.33398 7.16667C1.33398 10.3883 3.94566 13 7.16732 13C8.77815 13 10.2365 12.3471 11.2921 11.2915Z"
+      stroke="black"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 )).attrs({
   className: 'search-icon',
 })`
   position: absolute;
   right: 35px;
-  height: 18px;
-  top: calc(50% - 9px);
-  width: 18px;
-
-  path {
-    fill: ${props => props.theme.sidebar.textColor};
-  }
+  height: 16px;
+  top: 20px;
+  width: 16px;
 `;
 
 export const SearchResultsBox = styled.div`
@@ -89,11 +96,21 @@ export const ClearIcon = styled.i`
   display: inline-block;
   width: ${props => props.theme.spacing.unit * 2}px;
   text-align: center;
-  right: ${props => props.theme.spacing.unit * 4}px;
+  top: 12px;
+  right: 35px;
   line-height: 2em;
   vertical-align: middle;
   margin-right: 2px;
   cursor: pointer;
   font-style: normal;
   color: '#666';
+`;
+
+export const NoResult = styled.div`
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
