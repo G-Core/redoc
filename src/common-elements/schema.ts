@@ -29,6 +29,16 @@ export const OneOfButton = styled.button<{ active: boolean; deprecated: boolean 
   outline: none;
   color: ${props => props.theme.colors.text.primary};
 
+  &:hover {
+    color: #56535f;
+    border-color: #bfc8ce;
+  }
+
+  &:active {
+    color: #56535f;
+    border-color: #a3a7aa;
+  }
+
   &:focus {
     color: ${props => props.theme.typography.links.color};
     border-color: ${props => props.theme.typography.links.color};

@@ -34,9 +34,14 @@ export const SampleControls = styled.div`
     opacity: 1;
     border-radius: 4px;
 
-    :hover,
+    :hover {
+      background: #ff6c2e;
+    }
+    :active {
+      background: #db4100;
+    }
     :focus {
-      background: #ff7b43;
+      background: #ff5913;
     }
   }
 `;

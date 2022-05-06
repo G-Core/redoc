@@ -48,12 +48,14 @@ const options: RedocRawOptions = {
       code: {
         fontFamily: 'Inter, sans-serif',
         color: '#56535F',
-        fontWeight: 400,
+        fontWeight: '400',
         fontSize: '14px',
         backgroundColor: '#F3F4F5',
       },
       links: {
         color: '#FF5913',
+        hover: '#FF6C2E',
+        visited: '#DB4100',
       },
       rightPanelHeading: {
         fontSize: '14px',

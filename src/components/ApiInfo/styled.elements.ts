@@ -23,6 +23,16 @@ export const DownloadButton = styled.a`
   text-decoration: none;
   cursor: pointer;
 
+  :hover {
+    color: ${props => props.theme.typography.links.hover};
+    border-color: ${props => props.theme.typography.links.hover};
+  }
+
+  :active {
+    color: ${props => props.theme.typography.links.visited};
+    border-color: ${props => props.theme.typography.links.visited};
+  }
+
   ${extensionsHook('DownloadButton')};
 `;
 
