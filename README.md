@@ -13,7 +13,7 @@
 
 ## About Redoc
 
-Redoc is an open-source tool for generating documentation from OpenAPI (fka Swagger) definitions.
+Redoc is an open-source tool for generating documentation from OpenAPI (fka Swagger) definitions
 
 By default Redoc offers a three-panel, responsive layout:
 
