@@ -14,7 +14,7 @@
     `};var oe=Z;function ie(e){return t=>{if(t.theme.extensionsHook)return t.theme.extensionsHook(e,t)}}const se=oe.div`
   padding: 20px;
   color: red;
-`;class ae extends e.Component{constructor(e){super(e),this.state={error:void 0}}componentDidCatch(e){return this.setState({error:e}),!1}render(){return this.state.error?e.createElement(se,null,e.createElement("h1",null,"Something went wrong..."),e.createElement("small",null," ",this.state.error.message," "),e.createElement("p",null,e.createElement("details",null,e.createElement("summary",null,"Stack trace"),e.createElement("pre",null,this.state.error.stack))),e.createElement("small",null," ReDoc Version: ","2.0.0-rc.66")," ",e.createElement("br",null),e.createElement("small",null," Commit: ","64e55ffb")):e.Children.only(this.props.children)}}const le=te`
+`;class ae extends e.Component{constructor(e){super(e),this.state={error:void 0}}componentDidCatch(e){return this.setState({error:e}),!1}render(){return this.state.error?e.createElement(se,null,e.createElement("h1",null,"Something went wrong..."),e.createElement("small",null," ",this.state.error.message," "),e.createElement("p",null,e.createElement("details",null,e.createElement("summary",null,"Stack trace"),e.createElement("pre",null,this.state.error.stack))),e.createElement("small",null," ReDoc Version: ","2.0.0-rc.66")," ",e.createElement("br",null),e.createElement("small",null," Commit: ","e728baf3")):e.Children.only(this.props.children)}}const le=te`
   0% {
     transform: rotate(0deg); }
   100% {
@@ -962,8 +962,23 @@
 
     code {
       background-color: transparent;
+      border: 0;
       color: ${({theme:e})=>e.typography.code.color};
       padding: 0;
+
+      .token {
+        .string,
+        .operator,
+        .number,
+        .punctuation {
+          color: #22174A;
+          opacity: 1;
+        }
+
+        .keyword {
+          color: #3e2593;
+        }
+      }
 
       &:before,
       &:after {
