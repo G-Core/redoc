@@ -99,18 +99,16 @@ export const StyledMarkdownBlock = styled(
       color: ${({ theme }) => theme.typography.code.color};
       padding: 0;
 
-      .token {
-        .string,
-        .operator,
-        .number,
-        .punctuation {
-          color: #22174a;
-          opacity: 1;
-        }
+      .token.string,
+      .token.operator,
+      .token.number,
+      .token.punctuation {
+        color: #22174a;
+        opacity: 1;
+      }
 
-        .keyword {
-          color: #3e2593;
-        }
+      .token.keyword {
+        color: #3e2593;
       }
 
       &:before,
